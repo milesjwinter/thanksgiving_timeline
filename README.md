@@ -1,2 +1,2 @@
-# thanksgiving_timeline
-I'm thankful for code
+# Thanksgiving Time
+stupid, but also kind of fun
