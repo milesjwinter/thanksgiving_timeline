@@ -7,7 +7,8 @@ from timeline.event import Event
 def timeline(
     event_time: datetime, events: Sequence[Event], verbose: bool = True
 ) -> Sequence[Event]:
-    """construct timeline based on specified event durations
+    """construct timeline based on specified event durations. Most
+    useful when you don't know the absolute event times
 
     Parameters
     ----------
@@ -26,11 +27,11 @@ def timeline(
     temp_time = timedelta(seconds=0)
     for event in reversed(events):
         temp_time += event.duration
-        event._event_time = event_time - temp_time
+        event.event_time = event_time - temp_time
 
     if verbose:
         for event in events:
             notes = f" - Notes: {event.notes}" if event.notes else ""
-            print(f"{event._event_time} {event.name}{notes}")
+            print(f"{event.event_time} {event.name}{notes}")
 
     return events
