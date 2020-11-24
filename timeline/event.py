@@ -23,4 +23,4 @@ class Event:
     duration: timedelta
     notes: Optional[str] = None
     event_type: Optional[Literal["cooking", "prep", "fun"]] = None
-    _event_time: Optional[datetime] = field(default=None, init=False)
+    event_time: Optional[datetime] = None
