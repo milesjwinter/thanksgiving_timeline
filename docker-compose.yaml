@@ -1,0 +1,10 @@
+version: "3"
+services:
+  timeline:
+    build:
+      context: .
+    entrypoint: python
+    command: thanksgiving.py
+    volumes:
+      - ./outputs:/proj/outputs
+
