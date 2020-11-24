@@ -1,4 +1,4 @@
-from typing import Dict, Optional, Sequence
+from typing import Dict, Literal, Optional, Sequence
 
 from graphviz import Digraph
 
@@ -6,7 +6,10 @@ from timeline.event import Event
 
 
 def graph_timeline(
-    events: Sequence[Event], fill_dict: Optional[Dict[str, str]] = None
+    events: Sequence[Event],
+    fill_dict: Optional[
+        Dict[Optional[Literal["cooking", "prep", "fun"]], str]
+    ] = None,
 ) -> Digraph:
     """ Produces Graphviz representation of timeline sequence
 
@@ -43,7 +46,7 @@ def graph_timeline(
     for i, event in enumerate(events):
         fillcolor = fill_dict.get(event.event_type)
         notes = f"\n Notes: {event.notes}" if event.notes else ""
-        description = f"{event.name.upper()}\n{event._event_time}{notes}"
+        description = f"{event.name.upper()}\n{event.event_time}{notes}"
         if i == (len(events) - 1):
             dot.node(str(i), description, fillcolor=fillcolor)
         else:
