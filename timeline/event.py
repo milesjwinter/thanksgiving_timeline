@@ -1,6 +1,6 @@
 from dataclasses import dataclass, field
 from datetime import datetime, timedelta
-from typing import Literal, Optional
+from typing import Optional
 
 
 @dataclass
@@ -15,12 +15,14 @@ class Event:
         time until next timeline event (not full event duration)
     notes: str, default=None
         optional event notes
-    event_type: Optional, one of "cooking", "prep", "fun", default=None
-        type of event; used to graph fill colors
+    event_type: Optional[str], default=None
+        type of event; used to graph fill colors (see timeline.utils.py)
+    event_time: Optional[datetime], default=None
+        time of event
     """
 
     name: str
     duration: timedelta
     notes: Optional[str] = None
-    event_type: Optional[Literal["cooking", "prep", "fun"]] = None
+    event_type: Optional[str] = None
     event_time: Optional[datetime] = None

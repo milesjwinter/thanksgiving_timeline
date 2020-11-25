@@ -6,10 +6,7 @@ from timeline.event import Event
 
 
 def graph_timeline(
-    events: Sequence[Event],
-    fill_dict: Optional[
-        Dict[Optional[Literal["cooking", "prep", "fun"]], str]
-    ] = None,
+    events: Sequence[Event], fill_dict: Optional[Dict[str, str]] = None,
 ) -> Digraph:
     """ Produces Graphviz representation of timeline sequence
 
@@ -22,7 +19,8 @@ def graph_timeline(
         time ordered sequence of events
     fill_dict: Optional[Dict[str,str]]
         dictionary w/ key `event_type` and value `fillcolor` to be used for
-        graph background
+        graph background, unspecified `event_type`, `fillcolor` pairs
+        default to gray
 
     Returns
     -------
@@ -44,7 +42,11 @@ def graph_timeline(
     dot = Digraph(node_attr=node_attr, graph_attr=dict(size="12,12"))
 
     for i, event in enumerate(events):
-        fillcolor = fill_dict.get(event.event_type)
+        if event.event_type:
+            fillcolor = fill_dict.get(event.event_type)
+        else:
+            fillcolor = None
+
         notes = f"\n Notes: {event.notes}" if event.notes else ""
         description = f"{event.name.upper()}\n{event.event_time}{notes}"
         if i == (len(events) - 1):
