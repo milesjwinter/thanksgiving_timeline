@@ -41,7 +41,12 @@ events = [
         event_type="cooking",
     ),
     Event(
-        name="Sides in", duration=timedelta(minutes=25), event_type="cooking"
+        name="Stuffing in", duration=timedelta(minutes=10), event_type="cooking"
+    ),
+    Event(
+        name="GB casserole in",
+        duration=timedelta(minutes=10),
+        event_type="cooking",
     ),
     Event(
         name="Uncover stuffing",
