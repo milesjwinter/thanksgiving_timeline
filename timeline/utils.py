@@ -48,7 +48,8 @@ def graph_timeline(
             fillcolor = None
 
         notes = f"\n Notes: {event.notes}" if event.notes else ""
-        description = f"{event.name.upper()}\n{event.event_time}{notes}"
+        time = event.event_time.strftime("%m/%d/%Y, %H:%M")
+        description = f"{event.name.upper()}\n{time}{notes}"
         if i == (len(events) - 1):
             dot.node(str(i), description, fillcolor=fillcolor)
         else:
