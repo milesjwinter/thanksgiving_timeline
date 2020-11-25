@@ -57,7 +57,7 @@ events = [
 
 
 dinner_time = datetime(2020, 11, 26, hour=14)
-events = timeline(event_time=dinner_time, events=events)
+events = timeline(events=events, event_time=dinner_time, event_time_type="end")
 g = graph_timeline(events)
 g.format = "png"
 g.render("outputs/timeline-graph.gv", view=False)
