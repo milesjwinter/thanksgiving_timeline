@@ -8,15 +8,16 @@ def timeline(
     event_time: datetime, events: Sequence[Event], verbose: bool = True
 ) -> Sequence[Event]:
     """construct timeline based on specified event durations. Most
-    useful when you don't know the absolute event times
+    useful when you don't know the absolute event times. Events are
+    assumed to take place prior to `event_time`
 
     Parameters
     ----------
     event_time: datetime
         time event takes place
     events: Sequence[Event]
-        time ordered sequence of events
-    verbose: bool, default = False
+        time ordered sequence of events leading up to `event_time`
+    verbose: bool, default = True
         print timeline to stdout
 
     Returns
