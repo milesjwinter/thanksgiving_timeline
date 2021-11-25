@@ -3,8 +3,6 @@ from datetime import datetime, timedelta
 from timeline import Event, graph_timeline, timeline
 
 events = [
-    Event(name="Leave Chicago", duration=timedelta(hours=1, minutes=30)),
-    Event(name="Settle in", duration=timedelta(minutes=15)),
     Event(
         name="Prep Turkey",
         duration=timedelta(minutes=35),
@@ -25,7 +23,7 @@ events = [
     ),
     Event(
         name="Turkey Back in",
-        duration=timedelta(minutes=45),
+        duration=timedelta(hours=1, minutes=20),
         event_type="cooking",
     ),
     Event(
@@ -61,7 +59,7 @@ events = [
 ]
 
 
-dinner_time = datetime(2020, 11, 26, hour=14)
+dinner_time = datetime(2021, 11, 25, hour=17, minute=30)
 events = timeline(events=events, event_time=dinner_time, event_time_type="end")
 g = graph_timeline(events)
 g.format = "png"
