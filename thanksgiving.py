@@ -4,8 +4,13 @@ from timeline import Event, graph_timeline, timeline
 
 events = [
     Event(
+        name="Peel Potatoes",
+        duration=timedelta(minutes=30),
+        event_type="prep",
+    ),
+    Event(
         name="Prep Turkey",
-        duration=timedelta(minutes=35),
+        duration=timedelta(minutes=40),
         notes="oven at 400",
         event_type="prep",
     ),
@@ -23,12 +28,22 @@ events = [
     ),
     Event(
         name="Turkey Back in",
-        duration=timedelta(hours=1, minutes=20),
+        duration=timedelta(minutes=5),
         event_type="cooking",
     ),
     Event(
+        name="Start Boiling Potatoes",
+        duration=timedelta(minutes=55),
+        event_type="cooking",
+    ),
+    Event(
+        name="Mash Potatoes",
+        duration=timedelta(minutes=10),
+        event_type="prep",
+    ),
+    Event(
         name="Prep Stuffing",
-        duration=timedelta(minutes=15),
+        duration=timedelta(minutes=5),
         notes="AL foil on",
         event_type="prep",
     ),
@@ -59,7 +74,7 @@ events = [
 ]
 
 
-dinner_time = datetime(2021, 11, 25, hour=17, minute=30)
+dinner_time = datetime(2025, 11, 27, hour=17, minute=30)
 events = timeline(events=events, event_time=dinner_time, event_time_type="end")
 g = graph_timeline(events)
 g.format = "png"
